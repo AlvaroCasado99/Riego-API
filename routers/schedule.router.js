@@ -1,7 +1,7 @@
 import express from 'express'
 
 // Router for Schedule page
-const router = express.router();
+const router = express.Router();
 
 // Schedule Router -> Middlewares
 

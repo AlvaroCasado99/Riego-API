@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 
-import schedule from './routers/schedule.router'
+import schedule from './routers/schedule.router.js'
 
 // Express main application
 const app = express()

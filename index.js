@@ -13,6 +13,12 @@ app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON
 // Routers
 app.use('/schedule', schedule)
 
+app.get('/hola', (req, res) => {
+    req.status(200).json({
+        msg: 'hola amigo'
+    })
+})
+
 // 404 Error catcher
 app.use((request, response) => {
     response.status(404).json({

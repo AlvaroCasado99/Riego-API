@@ -13,6 +13,8 @@ app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON
 // Routers
 app.use('/schedule', schedule)
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
 app.get('/hola', (req, res) => {
     req.status(200).json({
         msg: 'hola amigo'
@@ -26,7 +28,7 @@ app.use((request, response) => {
     })
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`Application is up. GO to http://localhost:${PORT}`)
 })

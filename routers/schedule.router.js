@@ -9,7 +9,10 @@ const router = express.Router();
 
 
 // Schedule Router -> Routes
+router.get('/', (req, res) => res.send("<h1>Programaciones</h1>"))
+
 router.post('/new', (req, res) => {
+    console.log(req.body)
     if(req.body){
         const schedule = new Schedule(req.body)
 
@@ -30,6 +33,7 @@ router.post('/new', (req, res) => {
  */
 router.get('/:id', (req, res, next) => {
     const id = req.params.id
+    console.log(id)
     if(id){
         Schedule.findById(id)
             .then(schedule => {

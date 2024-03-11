@@ -9,8 +9,6 @@ const router = express.Router();
 
 
 // Schedule Router -> Routes
-router.get('/', (req, res) => res.send("<h1>Programaciones</h1>"))
-
 router.post('/new', (req, res) => {
     console.log(req.body)
     if(req.body){

@@ -1,5 +1,5 @@
 function notFound (req, res, next) {
-    response.status(404).json({
+    res.status(404).json({
         error: "Not Found"
     })
 }

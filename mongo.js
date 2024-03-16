@@ -3,9 +3,15 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const connectDB = () =>  mongoose.connect(process.env.RIEGO_DB_URI)
+const {RIEGO_DB_URI, TEST_DB_URI, NODE_ENV} = process.env
+
+const connectionString = NODE_ENV==="test"
+    ? TEST_DB_URI
+    : RIEGO_DB_URI
+
+const connectDB = () =>  mongoose.connect(connectionString)
     .then(()=>{
-        console.log('Database connected')
+        console.log(`Database ${NODE_ENV} connected`)
     })
     .catch(err => {
         console.error(err)

@@ -18,7 +18,7 @@ dotenv.config()
 app.use(express.json())   // Body parser: poder recibir req con body JSON
 app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
 
-// Routers
+// Routers (Controllers)
 app.use('/schedule', schedule)
 
 
@@ -35,6 +35,8 @@ app.get('/hola', (req, res) => {
 app.use(notFound)
 
 const PORT = process.env.PORT
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Application is up. GO to http://localhost:${PORT}`)
 })
+
+export {app, server}

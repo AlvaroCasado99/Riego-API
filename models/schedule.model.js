@@ -11,10 +11,14 @@ const daySchema = new Schema({
 })
 
 const scheduleSchema = new Schema({
-    user: String,
     time: Number,
     campain: Boolean,
     days: [daySchema],
+    user; String
+    // user: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User'
+    // }]
 })
 
 

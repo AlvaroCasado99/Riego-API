@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+const { Schema, model } = require("mongoose");
 
 const periodSchema = new Schema({
     sector: String,
@@ -14,7 +14,7 @@ const scheduleSchema = new Schema({
     time: Number,
     campain: Boolean,
     days: [daySchema],
-    user; String
+    user: String
     // user: [{
     //     type: Schema.Types.ObjectId,
     //     ref: 'User'
@@ -52,4 +52,6 @@ scheduleSchema.set('toJSON', {
 
 const Schedule = model('Schedule', scheduleSchema)
 
-export default Schedule
+module.exports = {
+    Schedule
+}

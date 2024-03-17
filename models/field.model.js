@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+const { Schema, model } = require("mongoose");
 
 const fieldSchema = new Schema({
     name: String,
@@ -36,4 +36,6 @@ fieldSchema.set('toJSON', {
 
 const Field = model('Field', fieldSchema)
 
-export default Field
+module.exports = {
+    Field
+}

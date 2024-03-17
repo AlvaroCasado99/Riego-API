@@ -1,8 +1,9 @@
-import express from "express";
-import bcrypt from "bcrypt"
-import User from "../models/user.model.js"
+const express = require("express")
+const bcrypt = require("bcrypt")
 
-const router = express.router();
+const {User} = require("../models/user.model")
+const {notFound} = require("../middlewares/notFound.middleware")
+const router = express.Router()
 
 // Rutas
 router.post('/', async (req, res, next) => {
@@ -43,4 +44,6 @@ router.use((error, req, res, next)=>{
 
 })
 
-export default router
+module.exports = { 
+    router
+}

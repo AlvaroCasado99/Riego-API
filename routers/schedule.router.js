@@ -1,6 +1,6 @@
-import express from 'express'
-import Schedule from '../models/schedule.model.js';
-import notFound from '../middlewares/notFound.middleware.js';
+const express = require('express')
+const {Schedule} = require('../models/schedule.model.js')
+const {notFound} = require('../middlewares/notFound.middleware.js')
 
 // Router for Schedule page
 const router = express.Router();
@@ -131,7 +131,6 @@ router.get('/summary/:from-:to', (req, res) => {
     }
 })
 
-
 // Not Found (404) handler
 router.use(notFound)
 
@@ -149,4 +148,6 @@ router.use((error, req, res, next)=>{
 
 })
 
-export default router
+module.exports = { 
+    router
+}

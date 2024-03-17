@@ -1,7 +1,11 @@
-export function example (request, response, next) {
+function example (request, response, next) {
     // Business logic
     // --------------
     // --------------
     
     next(); // para que la petición isga avanzando
+}
+
+module.exports = {
+    example
 }

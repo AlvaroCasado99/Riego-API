@@ -1,5 +1,5 @@
-import mongoose from "mongoose"
-import dotenv from 'dotenv'
+const mongoose = require("mongoose")
+const dotenv = require('dotenv')
 
 dotenv.config()
 
@@ -18,6 +18,8 @@ const connectDB = () =>  mongoose.connect(connectionString)
     })
 
     // Buena practica para que si peta la API la conexion con mongo quede zombie
-    process.on('uncaughtException', () => mongoose.connection.disconnect())
+    process.on('uncaughtException', () => mongoose.connection.close())
 
-export default connectDB
+module.exports = { 
+    connectDB 
+}

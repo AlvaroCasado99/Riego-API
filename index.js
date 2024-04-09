@@ -35,6 +35,8 @@ const app = express()
 //     console.log(`Application is up. GO to http://localhost:${PORT}`)
 // })
 
+const server = "tus muertos pisados"
+
 module.exports = {
     app, 
     server

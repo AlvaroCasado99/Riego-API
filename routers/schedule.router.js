@@ -26,6 +26,25 @@ router.post('/new', (req, res) => {
     }
 })
 
+// Schedule Router -> Routes
+router.post('/update/:id', (req, res) => {
+    console.log(req.body)
+    if(req.body){
+        const schedule = new Schedule(req.body.schedule)
+        const id = req.params.id
+
+        schedule.findByIdAndUpdate(id, schedule)
+            .then( saved => {
+                res.status(201).json(saved)
+            })
+            .catch(err => {
+                res.status(500).json({error: err.name})
+            })
+    }else{
+        res.status(400).json({msg: "Nothing to create"})
+    }
+})
+
 /**
  * Returns information of the schedule whose ID matches the one in the parameters.
  */

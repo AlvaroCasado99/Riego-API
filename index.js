@@ -1,12 +1,16 @@
 
+console.log("index")
 const express = require('express')
 const dotenv = require('dotenv')
+console.log("dotenv")
 const mongoose = require('mongoose')
 const cors = require('cors')
+console.log("mongo")
 
 const {connectDB} = require('./mongo')
 const {notFound} = require('./middlewares/notFound.middleware')
 
+console.log('routers')
 const scheduleRouter = require('./routers/schedule.router').router
 const userRouter = require('./routers/user.router').router
 

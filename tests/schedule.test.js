@@ -97,7 +97,11 @@ beforeEach( async () => {
     const savedSchedule2 = await schedule2.save()
 })
 
-
+test("Schedules can be retrieved individualy by ID", async () => {
+    const response = await api.get(`/schedule/${basicID}`)
+    expect(response.body.id).toBeDefined()
+      
+})
 
 // Se ejecuta al final de TODOS los tests...
 afterAll(() => {

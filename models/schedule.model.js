@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const periodSchema = new Schema({
     sector: String,
-    hours: Number
+    time: Number
 })
 
 const daySchema = new Schema({
@@ -12,7 +12,7 @@ const daySchema = new Schema({
 
 const scheduleSchema = new Schema({
     time: Number,
-    campain: Boolean,
+    season: Boolean,
     days: [daySchema],
     user: String
     // user: [{

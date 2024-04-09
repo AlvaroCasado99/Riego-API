@@ -31,7 +31,6 @@ app.get("/", (req, res) => res.send("Express on Vercel"));
 app.use(notFound)
 
 const PORT = process.env.PORT
-console.log(PORT)
 const server = app.listen(PORT, () => {
     console.log(`Application is up. GO to http://localhost:${PORT}`)
 })

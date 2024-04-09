@@ -4,11 +4,11 @@ const express = require('express')
 // const mongoose = require('mongoose')
 // const cors = require('cors')
 
-const {connectDB} = require('./mongo')
-const {notFound} = require('./middlewares/notFound.middleware')
+// const {connectDB} = require('./mongo')
+// const {notFound} = require('./middlewares/notFound.middleware')
 
-const scheduleRouter = require('./routers/schedule.router').router
-const userRouter = require('./routers/user.router').router
+// const scheduleRouter = require('./routers/schedule.router').router
+// const userRouter = require('./routers/user.router').router
 
 // Express main application
 const app = express()
@@ -30,12 +30,10 @@ const app = express()
 // // 404 Error handler
 // app.use(notFound)
 
-console.log("tus muertos")
-const PORT = process.env.PORT
-console.log("pisados")
-const server = app.listen(PORT, () => {
-    console.log(`Application is up. GO to http://localhost:${PORT}`)
-})
+// const PORT = process.env.PORT
+// const server = app.listen(PORT, () => {
+//     console.log(`Application is up. GO to http://localhost:${PORT}`)
+// })
 
 module.exports = {
     app, 

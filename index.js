@@ -1,14 +1,18 @@
 
-const express = require('express')
-const dotenv = require('dotenv')
-const mongoose = require('mongoose')
-const cors = require('cors')
-
-const {connectDB} = require('./mongo')
-const {notFound} = require('./middlewares/notFound.middleware')
-
-const scheduleRouter = require('./routers/schedule.router').router
-const userRouter = require('./routers/user.router').router
+try{
+    const express = require('express')
+    const dotenv = require('dotenv')
+    const mongoose = require('mongoose')
+    const cors = require('cors')
+    
+    const {connectDB} = require('./mongo')
+    const {notFound} = require('./middlewares/notFound.middleware')
+    
+    const scheduleRouter = require('./routers/schedule.router').router
+    const userRouter = require('./routers/user.router').router
+}catch(err){
+    console.log("Aqui")
+}
 
 // Express main application
 const app = express()
@@ -20,8 +24,6 @@ connectDB()
 app.use(express.json())   // Body parser: poder recibir req con body JSON
 app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
 
-console.log('Post middleware')
-
 // Routers (Controllers)
 app.use('/schedule', scheduleRouter)
 
@@ -31,8 +33,6 @@ app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // 404 Error handler
 app.use(notFound)
-
-console.log("SOajdnfijadsfsng")
 
 const PORT = process.env.PORT
 const server = app.listen(PORT, () => {

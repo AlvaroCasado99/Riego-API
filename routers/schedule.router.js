@@ -2,8 +2,6 @@ const express = require('express')
 const {Schedule} = require('../models/schedule.model.js')
 const {notFound} = require('../middlewares/notFound.middleware.js')
 
-console.log('Imports')
-
 // Router for Schedule page
 const router = express.Router();
 

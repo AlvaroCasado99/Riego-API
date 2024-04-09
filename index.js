@@ -1,31 +1,39 @@
 
-try{
-    const express = require('express')
-    const dotenv = require('dotenv')
-    const mongoose = require('mongoose')
-    const cors = require('cors')
-    
-    const {connectDB} = require('./mongo')
-    const {notFound} = require('./middlewares/notFound.middleware')
-    
-    const scheduleRouter = require('./routers/schedule.router').router
-    const userRouter = require('./routers/user.router').router
-}catch(err){
-    console.log("Aqui")
-}
+const express = require('express')
+const dotenv = require('dotenv')
+const mongoose = require('mongoose')
+const cors = require('cors')
+
+const {connectDB} = require('./mongo')
+const {notFound} = require('./middlewares/notFound.middleware')
+
+const scheduleRouter = require('./routers/schedule.router').router
+const userRouter = require('./routers/user.router').router
 
 // Express main application
 const app = express()
 
 // Me conecto a la base de datos de mongo (lo hago aquí porque simpre se carga este fichero al llegar una peticion)
-connectDB()
+try{
+    connectDB()
+}catch(err){
+    console.log("Con la base de datos")
+}
 
 //Middlewares
-app.use(express.json())   // Body parser: poder recibir req con body JSON
-app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
+try{
+    app.use(express.json())   // Body parser: poder recibir req con body JSON
+    app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
+}catch(err){
+    console.log("Con los middlewares")
+}
 
 // Routers (Controllers)
-app.use('/schedule', scheduleRouter)
+try{
+    app.use('/schedule', scheduleRouter)
+}catch(err){
+    console.log("Con los schedules")
+}
 
 
 // End points

@@ -13,34 +13,22 @@ const userRouter = require('./routers/user.router').router
 // Express main application
 const app = express()
 
-// Me conecto a la base de datos de mongo (lo hago aquí porque simpre se carga este fichero al llegar una peticion)
-try{
-    connectDB()
-}catch(err){
-    console.log("Con la base de datos")
-}
+// // Me conecto a la base de datos de mongo (lo hago aquí porque simpre se carga este fichero al llegar una peticion)
+// connectDB()
 
-//Middlewares
-try{
-    app.use(express.json())   // Body parser: poder recibir req con body JSON
-    app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
-}catch(err){
-    console.log("Con los middlewares")
-}
+// //Middlewares
+// app.use(express.json())   // Body parser: poder recibir req con body JSON
+// app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
 
-// Routers (Controllers)
-try{
-    app.use('/schedule', scheduleRouter)
-}catch(err){
-    console.log("Con los schedules")
-}
+// // Routers (Controllers)
+// app.use('/schedule', scheduleRouter)
 
 
-// End points
-app.get("/", (req, res) => res.send("Express on Vercel"));
+// // End points
+// app.get("/", (req, res) => res.send("Express on Vercel"));
 
-// 404 Error handler
-app.use(notFound)
+// // 404 Error handler
+// app.use(notFound)
 
 const PORT = process.env.PORT
 const server = app.listen(PORT, () => {

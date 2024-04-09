@@ -13,13 +13,16 @@ const {notFound} = require('./middlewares/notFound.middleware')
 console.log('routers')
 const scheduleRouter = require('./routers/schedule.router').router
 const userRouter = require('./routers/user.router').router
-
+console.log('express')
 
 // Express main application
 const app = express()
 
+console.log('connection')
 // Me conecto a la base de datos de mongo (lo hago aquí porque simpre se carga este fichero al llegar una peticion)
 connectDB()
+
+console.log('middlewares')
 
 //Middlewares
 app.use(express.json())   // Body parser: poder recibir req con body JSON

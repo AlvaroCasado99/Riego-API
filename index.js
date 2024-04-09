@@ -1,8 +1,8 @@
 
 const express = require('express')
-const dotenv = require('dotenv')
-const mongoose = require('mongoose')
-const cors = require('cors')
+// const dotenv = require('dotenv')
+// const mongoose = require('mongoose')
+// const cors = require('cors')
 
 const {connectDB} = require('./mongo')
 const {notFound} = require('./middlewares/notFound.middleware')

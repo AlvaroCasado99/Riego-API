@@ -30,7 +30,9 @@ const app = express()
 // // 404 Error handler
 // app.use(notFound)
 
+console.log("tus muertos")
 const PORT = process.env.PORT
+console.log("pisados")
 const server = app.listen(PORT, () => {
     console.log(`Application is up. GO to http://localhost:${PORT}`)
 })

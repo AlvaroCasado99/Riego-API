@@ -35,6 +35,8 @@ const server = app.listen(PORT, () => {
     console.log(`Application is up. GO to http://localhost:${PORT}`)
 })
 
+console.log(server)
+
 module.exports = {
     app, 
     server

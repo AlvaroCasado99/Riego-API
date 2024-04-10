@@ -16,6 +16,7 @@ router.post('/new', (req, res) => {
 
         schedule.save()
             .then( saved => {
+                res.set('Access-Control-Allow-Origin', '*');
                 res.status(201).json(saved)
             })
             .catch(err => {

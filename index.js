@@ -18,9 +18,7 @@ connectDB()
 
 //Middlewares
 app.use(express.json())   // Body parser: poder recibir req con body JSON
-app.use(cors({
-    origin: "http://127.0.0.1:5173"
-}))         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
+app.use(cors())         // CrossOrigin...: necesario para el envio de datos JSON (entre otros)
 
 // Routers (Controllers)
 app.use('/schedule', scheduleRouter)

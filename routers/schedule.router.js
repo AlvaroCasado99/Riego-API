@@ -116,6 +116,7 @@ router.put('/:id', (req, res, next) => {
 /**
  * Should return an array of summaries for schedules between the date range given
  */
+// /field/#Field1/range/2024-04-15T00:00:00.000Z-none
 router.get('/field/:id/range/:from-:to', (req, res) => {
 
     const fieldId = req.params.id
@@ -126,9 +127,9 @@ router.get('/field/:id/range/:from-:to', (req, res) => {
 
     if(from && to && fieldId){
         if(to === "none" && from !== "none"){
-            res.status(200).json({msg: "This endpoint is under construction"})
+            res.status(200).json([])
         }else if(to !== "none" && from === "none"){
-            res.status(200).json({msg: "This endpoint is under construction"})
+            res.status(200).json([])
         }else{
             res.status(400)
         }

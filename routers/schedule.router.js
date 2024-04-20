@@ -114,40 +114,26 @@ router.put('/:id', (req, res, next) => {
 })
 
 /**
- * Should return schedule id, total hours, numbre of days and start date 
- */
-router.get('/summary/:id', (req, res, next) => {
-    const id = req.params.id
-    if(id){
-        Schedule.findById(id)
-            .then(schedule => {
-                const summary = {
-                    id: schedule._id,
-                    user: "Work in progress",
-                    time: "Work in progress",
-                    campain: "Work in progress",
-                }
-                res.status(200).json(summary)
-            })
-            .catch(err => {
-                res.status(500).json({error: err.name})
-            })
-
-    }else{
-        res.status(400).json({msg: "Schedule not provided"})
-    }
-})
-
-/**
  * Should return an array of summaries for schedules between the date range given
  */
-router.get('/summary/:from-:to', (req, res) => {
+router.get('/field/:id/range/:from-:to', (req, res) => {
+
+    const fieldId = req.params.id
     const from = req.params.from
     const to = req.params.to
-    if(from && to){
-        res.status(404).json({msg: "This endpoint is under construction"})
+
+    console.log(req.params)
+
+    if(from && to && fieldId){
+        if(to === "none" && from !== "none"){
+            res.status(200).json({msg: "This endpoint is under construction"})
+        }else if(to !== "none" && from === "none"){
+            res.status(200).json({msg: "This endpoint is under construction"})
+        }else{
+            res.status(400)
+        }
     }else{
-        res.status(400).json({msg: "Schedule not provided"})
+        res.status(400)
     }
 })
 

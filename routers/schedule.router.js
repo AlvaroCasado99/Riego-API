@@ -7,13 +7,20 @@ const router = express.Router();
 
 // Schedule Router -> Middlewares
 
-
 // Schedule Router -> Routes
+
+// Testing arduino <get> request 
+router.get('/arduino/test', (req, res) => {
+    res.status(201).json({
+        test: "Hola arduino"
+    })
+})
+
+// Add new schedule
 router.post('/new', (req, res) => {
     console.log(req.body)
     if(req.body){
         const schedule = new Schedule(req.body)
-
         schedule.save()
             .then( saved => {
                 res.set('Access-Control-Allow-Origin', '*');
@@ -27,7 +34,7 @@ router.post('/new', (req, res) => {
     }
 })
 
-// Schedule Router -> Routes
+// 
 router.post('/update/:id', (req, res) => {
     console.log(req.body)
     if(req.body){
@@ -116,20 +123,31 @@ router.put('/:id', (req, res, next) => {
 /**
  * Should return an array of summaries for schedules between the date range given
  */
-// /field/#Field1/range/2024-04-15T00:00:00.000Z-none
 router.get('/field/:id/range/:from-:to', (req, res) => {
 
     const fieldId = req.params.id
-    const from = req.params.from
-    const to = req.params.to
+    const from = req.params.from.replaceAll("_", "-")
+    const to = req.params.to.replaceAll("_", "-")
 
     console.log(req.params)
 
     if(from && to && fieldId){
         if(to === "none" && from !== "none"){
-            res.status(200).json([])
+            Schedule.find({field: fieldId, start: {$gte: from}})
+                .then(results => {
+                    res.status(200).json(results)
+                })
+                .catch(err => {
+                    next(err)
+                })
         }else if(to !== "none" && from === "none"){
-            res.status(200).json([])
+            Schedule.find({field: fieldId, start: {$lte: from}})
+            .then(results => {
+                res.status(200).json(results)
+            })
+            .catch(err => {
+                next(err)
+            })
         }else{
             res.status(400)
         }

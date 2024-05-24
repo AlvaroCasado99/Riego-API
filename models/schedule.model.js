@@ -12,15 +12,21 @@ const daySchema = new Schema({
 
 const scheduleSchema = new Schema({
     time: Number,
+    start: Date,
+    end: Date,
     season: Boolean,
     days: [daySchema],
-    user: String
+    user: String,
     // user: [{
     //     type: Schema.Types.ObjectId,
     //     ref: 'User'
+    // }],
+    field: String
+    // field: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Field'
     // }]
 })
-
 
 /**
  * Al hacer req.json() en un endpoint, lo que sea que vaya dentro del json() será parseado 
